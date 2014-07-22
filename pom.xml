@@ -1,29 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.quickrant.suite</groupId>
+  <artifactId>quickrant-admin</artifactId>
+  <packaging>war</packaging>
+  <version>0.3</version>
+  <name>quickrant-admin</name>
+  <url>http://maven.apache.org</url> 
 
   <parent>
     <groupId>com.quickrant</groupId>
-    <artifactId>master</artifactId>
-    <version>0.2</version>
+    <artifactId>suite</artifactId>
+    <version>0.3</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.quickrant.rave</groupId>
-  <artifactId>admin</artifactId>
-  <packaging>war</packaging>
-  <version>0.2</version>
-  <name>quickrant-admin</name>
-  <url>http://maven.apache.org</url> 
   
   <build>
     <finalName>ROOT</finalName>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
   </build>
-  
+
 </project>
