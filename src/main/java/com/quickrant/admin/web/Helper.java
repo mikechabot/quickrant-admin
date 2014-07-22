@@ -1,4 +1,4 @@
-package com.quickrant.rave.web;
+package com.quickrant.admin.web;
 
 import com.quickrant.api.models.Emotion;
 import com.quickrant.api.models.Question;

@@ -1,4 +1,4 @@
-package com.quickrant.rave;
+package com.quickrant.admin;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -21,7 +21,7 @@ public class Bootstrap implements ServletContextListener {
 		try {
 			/* Load the version */
 			Version.load();
-			log.info("quickrant, v" + Version.display());
+			log.info("quickrant-admin, v" + Version.display());
 
 			/* Load the configuration */
 			Configuration conf = Configuration.getInstance();

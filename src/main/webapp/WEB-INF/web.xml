@@ -8,9 +8,37 @@
   
   <!-- Bootstrap class runs during servlet container creation -->
   <listener>
-    <listener-class>com.quickrant.rave.Bootstrap</listener-class>
+    <listener-class>com.quickrant.admin.Bootstrap</listener-class>
   </listener>
-    
+  
+  <!-- Send /cache requests to CacheController -->
+  <servlet>
+    <servlet-name>CacheController</servlet-name>
+    <servlet-class>com.quickrant.admin.controller.CacheController</servlet-class>
+    <init-param>
+      <param-name>visitor-service</param-name>
+      <param-value>com.quickrant.api.services.VisitorService</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CacheController</servlet-name>
+    <url-pattern>/cache/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Error pages -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.jsp</location>
+  </error-page>
+  <error-page>    
+    <error-code>403</error-code>
+    <location>/403.jsp</location>
+  </error-page>
+  <error-page>    
+    <error-code>500</error-code>
+    <location>/500.jsp</location>
+  </error-page>
+
   <!-- Welcome list -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

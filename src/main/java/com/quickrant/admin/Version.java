@@ -1,4 +1,4 @@
-package com.quickrant.rave;
+package com.quickrant.admin;
 
 import java.io.IOException;
 import java.io.InputStream;
