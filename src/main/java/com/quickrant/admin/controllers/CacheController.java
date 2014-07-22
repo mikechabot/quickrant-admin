@@ -48,10 +48,6 @@ public class CacheController extends Controller {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String action = request.getPathInfo();
 			
-			/* Match action to root (/rant/) or /rant/[number] */
-			if (action == null || action.equals("") || action.equals("/")) {
-				visitorSvc.fetch("is_active", value)
-			}
 			return basePath() + "/index.jsp";
 		}	
 	}
