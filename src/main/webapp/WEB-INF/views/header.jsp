@@ -9,6 +9,7 @@
 	<!-- scripts -->
 	<script src="/js/jquery-1.11.1.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/custom.js"></script>
 
 	<!-- fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
@@ -19,8 +20,3 @@
     
   </head>
   <body>
-  <div class="container">
-	<div class="page-header">
-	  <h1>Admin Tools <small>quickrant</small></h1>
-	</div>
-  </div>

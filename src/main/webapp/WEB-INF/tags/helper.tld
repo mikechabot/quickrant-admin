@@ -6,16 +6,23 @@
 	<uri>/WEB-INF/tags</uri>
 	<function>
 		<name>getEmotion</name>
-		<function-class>com.quickrant.rave.web.Helper</function-class>
+		<function-class>com.quickrant.admin.web.Helper</function-class>
 		<function-signature>
 			java.lang.String getEmotion(java.lang.String)
 		</function-signature>
 	</function>
     <function>
         <name>getQuestion</name>
-        <function-class>com.quickrant.rave.web.Helper</function-class>
+        <function-class>com.quickrant.admin.web.Helper</function-class>
         <function-signature>
             java.lang.String getQuestion(java.lang.String)
+        </function-signature>
+    </function>
+    <function>
+        <name>getFormattedDate</name>
+        <function-class>com.quickrant.admin.web.Helper</function-class>
+        <function-signature>
+            java.lang.String getFormattedDate(java.sql.Timestamp)
         </function-signature>
     </function>
 </taglib>

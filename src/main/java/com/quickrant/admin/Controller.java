@@ -33,7 +33,7 @@ public abstract class Controller extends HttpServlet {
 		String action = request.getPathInfo();
 		String view = null;
 		try {
-			if (action == null || action.equals("") || action.equals("/") || action.matches("\\/([0-9]+)$")) {
+			if (action == null || action.equals("") || action.equals("/")) {
 				view = defaultAction.execute(request, response);
 			} else if (actions.get(action) == null) {
 				response.sendError(404);

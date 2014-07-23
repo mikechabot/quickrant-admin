@@ -2,6 +2,14 @@ body {
   font-family: Open Sans, Arial, sans serif;
 }
 
+.align-right {
+	text-align: right;
+}
+
 .mild-bold {
   font-weight: 600;
+}
+
+#timestamp {
+  font-size: 12px;
 }

@@ -1,9 +1,12 @@
 package com.quickrant.admin.web;
 
+import java.sql.Timestamp;
+
 import com.quickrant.api.models.Emotion;
 import com.quickrant.api.models.Question;
 import com.quickrant.api.services.EmotionService;
 import com.quickrant.api.services.QuestionService;
+import com.quickrant.api.utils.TimeUtils;
 
 public class Helper {
 
@@ -21,5 +24,11 @@ public class Helper {
 		Question question = (Question) questionSvc.fetchById(Integer.parseInt(id));
 		return question.getQuestion();
 	}
+	
+	/* Fetch a question given an id */
+	public static String getFormattedDate(Timestamp timestamp) {
+		return TimeUtils.getFormattedDate(timestamp);
+	}
+
 
 }
