@@ -3,6 +3,7 @@
 $(document).ready(function () {
     "use strict";
     $('#timestamp').text(getTimestamp());
+    $(".tablesorter").tablesorter();
 });
 
 function getTimestamp() {
