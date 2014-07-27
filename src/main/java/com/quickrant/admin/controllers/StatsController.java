@@ -12,17 +12,17 @@ import com.quickrant.admin.Controller;
 import com.quickrant.admin.utils.Utils;
 import com.quickrant.api.services.VisitorService;
 
-public class AdminCacheController extends Controller {
+public class StatsController extends Controller {
 
 	private static final long serialVersionUID = 1L;
 	
 	public static final String POPULATE_COOKIE_CACHE = "select id, created_at, cookie, ip_address, user_agent from visitors where created_at > (now() - interval '365 days') and is_complete = true";
-	
+
 	private VisitorService visitorSvc;
 
 	@Override
-	protected String basePath() { return ""; }
-	
+	protected String basePath() { return "/stats"; }
+
 	@Override
 	protected void initActions(ServletConfig config) {
 		/* Add dependencies */
@@ -30,8 +30,10 @@ public class AdminCacheController extends Controller {
 		
 		/* Add servlet actions */
 		addAction(null, new GetAction());
+		addAction("/cache", new CacheAction());
+		addAction("/database", new DatabaseAction());
 	}
-	
+
 	private void setVisitorService(String visitorSvcClass) {
 		visitorSvc = (VisitorService) Utils.newInstance(visitorSvcClass);
 	}
@@ -42,9 +44,18 @@ public class AdminCacheController extends Controller {
 	}
 
 	/**
-	 * Handle GET requests to /cache
+	 * Handle GET requests to /stats
 	 */
 	public class GetAction implements Action {
+		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			return "/index.jsp";
+		}	
+	}
+
+	/**
+	 * Handle GET requests to /cache
+	 */
+	public class CacheAction implements Action {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			List<Model> visitors = visitorSvc.fetchBySql(POPULATE_COOKIE_CACHE);
 			request.setAttribute("visitors", visitors);
@@ -53,4 +64,16 @@ public class AdminCacheController extends Controller {
 		}	
 	}
 	
+	/**
+	 * Handle GET requests to /database
+	 */
+	public class DatabaseAction implements Action {
+		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			List<Model> visitors = visitorSvc.fetchBySql(POPULATE_COOKIE_CACHE);
+			request.setAttribute("visitors", visitors);
+			request.setAttribute("cache-size", visitors.size());
+			return basePath() + "/cache/index.jsp";
+		}	
+	}
+
 }

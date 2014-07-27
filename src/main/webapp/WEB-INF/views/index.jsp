@@ -22,7 +22,7 @@
 	  </div>
 	  <div class="panel-body">
         <ul>
-          <li><a href="/cache">Cache Stats</a></li>
+          <li><a href="/stats/cache">Cache Stats</a></li>
 	    </ul>
 	  </div>
 	</div>

@@ -13,16 +13,16 @@
   
   <!-- Send /cache requests to CacheController -->
   <servlet>
-    <servlet-name>AdminCacheController</servlet-name>
-    <servlet-class>com.quickrant.admin.controllers.AdminCacheController</servlet-class>
+    <servlet-name>StatsController</servlet-name>
+    <servlet-class>com.quickrant.admin.controllers.StatsController</servlet-class>
     <init-param>
       <param-name>visitor-service</param-name>
       <param-value>com.quickrant.api.services.VisitorService</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminCacheController</servlet-name>
-    <url-pattern>/cache/*</url-pattern>
+    <servlet-name>StatsController</servlet-name>
+    <url-pattern>/stats/*</url-pattern>
   </servlet-mapping>
 
   <!-- Error pages -->
