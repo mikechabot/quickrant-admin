@@ -23,6 +23,7 @@
 	  <div class="panel-body">
         <ul>
           <li><a href="/stats/cache">Cache Stats</a></li>
+          <li><a href="/stats/database">Database Stats</a></li>
 	    </ul>
 	  </div>
 	</div>

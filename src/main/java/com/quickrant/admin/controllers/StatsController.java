@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.javalite.activejdbc.Model;
 
 import com.quickrant.admin.Controller;
 import com.quickrant.admin.utils.Utils;
+import com.quickrant.api.database.Database;
 import com.quickrant.api.models.CacheStats;
+import com.quickrant.api.models.DatabaseStats;
 import com.quickrant.api.services.CacheStatsService;
+import com.quickrant.api.services.DatabaseStatsService;
 import com.quickrant.api.services.VisitorService;
 import com.quickrant.api.utils.TimeUtils;
 
@@ -33,11 +35,13 @@ public class StatsController extends Controller {
 	public static final String LAST_6_MONTHS = "select id, created_at, cookie, ip_address, user_agent from visitors where created_at > (now() - interval '6 months') and is_complete = true";
 	public static final String LAST_1_YEAR = "select id, created_at, cookie, ip_address, user_agent from visitors where created_at > (now() - interval '1 year') and is_complete = true";
 	public static final String GET_CACHE_STATS = "select * from cache_stats where id in (select max(id) from cache_stats)";
+	public static final String GET_DATABASE_STATS = "select * from database_stats where id in (select max(id) from database_stats)";
 	
 	public static List<String> timeframes = new ArrayList<String>(0);
 	
-	private VisitorService visitorSvc;
+	private VisitorService visitorSvc;	
 	private CacheStatsService cacheStatsSvc;
+	private DatabaseStatsService databaseStatsSvc;
 
 	@Override
 	protected String basePath() { return "/stats"; }
@@ -47,6 +51,7 @@ public class StatsController extends Controller {
 		/* Add dependencies */
 		setVisitorService(config.getInitParameter("visitor-service"));
 		setCacheStatsService(config.getInitParameter("cache-stats-service"));
+		setDatabaseStatsService(config.getInitParameter("database-stats-service"));
 		
 		/* Populate the timeframes list */
 		timeframes.add(LAST_24_HOURS);
@@ -63,6 +68,10 @@ public class StatsController extends Controller {
 		addAction(null, new GetAction());
 		addAction("/cache", new CacheAction());
 		addAction("/database", new DatabaseAction());
+	}
+
+	private void setDatabaseStatsService(String databaseStatsSvcClass) {
+		databaseStatsSvc = (DatabaseStatsService) Utils.newInstance(databaseStatsSvcClass);
 	}
 
 	private void setCacheStatsService(String cacheStatsSvcClass) {
@@ -91,8 +100,7 @@ public class StatsController extends Controller {
 	 * Handle GET requests to /cache
 	 */
 	public class CacheAction implements Action {
-		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
+		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
 			/* Get URL parameters and convert to SQL */
 			String timeframe = request.getParameter("timeframe");
 			String sql = getCacheStatsSql(timeframe);
@@ -105,8 +113,7 @@ public class StatsController extends Controller {
 			} else {
 				response.sendError(400);
 				return null;
-			}
-			
+			}			
 			return basePath() + "/cache/index.jsp";
 		}
 
@@ -133,10 +140,11 @@ public class StatsController extends Controller {
 	 */
 	public class DatabaseAction implements Action {
 		public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			List<Model> visitors = visitorSvc.fetchBySql(GET_CACHE_STATS);
-			request.setAttribute("visitors", visitors);
-			request.setAttribute("cache-size", visitors.size());
-			return basePath() + "/cache/index.jsp";
+			request.setAttribute("databaseVersion", Database.version);
+			DatabaseStats stats = (DatabaseStats) databaseStatsSvc.fetchBySql(GET_CACHE_STATS).get(0);
+			log.info(stats.toString());
+			request.setAttribute("databaseStats", (DatabaseStats) databaseStatsSvc.fetchBySql(GET_DATABASE_STATS).get(0));
+			return basePath() + "/database/index.jsp";
 		}	
 	}
 

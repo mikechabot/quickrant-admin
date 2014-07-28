@@ -15,23 +15,27 @@ public class Helper {
 
 	/* Fetch an emotion given an id */
 	public static String getEmotion(String id) {
+		if (id == null || id.isEmpty()) return null;
 		Emotion emotion = (Emotion) emotionSvc.fetchById(Integer.parseInt(id));
 		return emotion.getEmotion();
 	}
 	
 	/* Fetch a question given an id */
 	public static String getQuestion(String id) {
+		if (id == null || id.isEmpty()) return null;
 		Question question = (Question) questionSvc.fetchById(Integer.parseInt(id));
 		return question.getQuestion();
 	}
 	
 	/* Fetch a question given an id */
 	public static String getFormattedDate(Timestamp timestamp) {
+		if (timestamp == null) return null;
 		return TimeUtils.getFormattedDate(timestamp);
 	}
 	
 	/* Fetch a question given an id */
 	public static String getFormattedDateWithSec(Timestamp timestamp) {
+		if (timestamp == null) return null;
 		return TimeUtils.getFormattedDateWithSec(timestamp);
 	}
 

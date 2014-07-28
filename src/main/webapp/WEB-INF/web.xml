@@ -23,6 +23,10 @@
       <param-name>cache-stats-service</param-name>
       <param-value>com.quickrant.api.services.CacheStatsService</param-value>
     </init-param>
+    <init-param>
+      <param-name>database-stats-service</param-name>
+      <param-value>com.quickrant.api.services.DatabaseStatsService</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>StatsController</servlet-name>
