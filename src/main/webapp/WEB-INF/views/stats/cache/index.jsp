@@ -13,7 +13,7 @@
 	  <div class="panel-heading">
 	  <div class="row">
 	    <div class="col-md-9">
-	      <h3 class="panel-title">Cache Entries</h3>
+	      <h3 class="panel-title">Overview</h3>
 	    </div>
 	    <div class="col-md-3 align-right">
 	  	  <span id="timestamp" class="mild-bold"></span>
@@ -22,24 +22,59 @@
 	  </div>
 	  <div class="panel-body">
 	    <div class="container half-width">
-        <form method="get" role="form" action="/cache">
+	    <table class="table table-bordered">
+	      <tr>
+	      	<th class="align-right">Cache name: </th>
+	      	<td>${cacheStats.cacheName}</td>
+	      </tr>
+	      <tr>
+	      	<th class="align-right">Current size: </th>
+	      	<td>${cacheStats.entries}</td>
+	      </tr>
+	      <tr>
+	      	<th class="align-right">Entry expiry (in min): </th>
+	      	<td>${cacheStats.expiry}</td>
+	      </tr>
+	      <tr>
+	      	<th class="align-right">Next cleaning: </th>
+	      	<td>${cacheStats.nextRunTime}</td>
+	      </tr>
+	      <tr>
+	      	<th class="align-right">Purging entries created before: </th>
+	      	<td>${helper:getFormattedDateWithSec(maxAge)}</td>
+	      </tr>
+	    </table>
+	    </div>
+	  </div>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <h3 class="panel-title">Cache Entries</h3>
+	    </div>
+	  </div>
+	  </div>
+	  <div class="panel-body">
+	    <div class="container half-width">
+        <form method="get" role="form" action="/stats/cache">
           <select name="timeframe" class="form-control input-sm" onchange="this.form.submit()">
-            <option value="1">Last 24 hours</option>
-            <option value="2">Last 3 days</option>
-            <option value="3">Last 5 days</option>
-            <option value="4">Last 7 days</option>
-            <option value="5">Last 15 days</option>
-            <option value="6">Last 30 days</option>
-            <option value="7">Last 3 months</option>
-            <option value="8">Last 6 months</option>
-            <option value="9">Last 1 year</option>
+            <option value="0" ${timeframe == '0' ? 'selected' : ''}>Last 24 hours</option>
+            <option value="1" ${timeframe == '1' ? 'selected' : ''}>Last 3 days</option>
+            <option value="2" ${timeframe == '2' ? 'selected' : ''}>Last 5 days</option>
+            <option value="3" ${timeframe == '3' ? 'selected' : ''}>Last 7 days</option>
+            <option value="4" ${timeframe == '4' ? 'selected' : ''}>Last 15 days</option>
+            <option value="5" ${timeframe == '5' ? 'selected' : ''}>Last 30 days</option>
+            <option value="6" ${timeframe == '6' ? 'selected' : ''}>Last 3 months</option>
+            <option value="7" ${timeframe == '7' ? 'selected' : ''}>Last 6 months</option>
+            <option value="8" ${timeframe == '8' ? 'selected' : ''}>Last 1 year</option>
           </select>
         </form>
         </div>
 	  	 <table class="table table-condensed small tablesorter">
 	  	 <thead>
 	  	 <tr>
-	  	   <td colspan="5" class="align-right" valign="bottom"><em>Found <strong>${fn:length(visitors)}</strong> unique cookies (past 1 year)</em></td>
+	  	   <td colspan="5" class="align-right" valign="bottom"><em>Found <strong>${fn:length(visitors)}</strong> unique cookies</em></td>
 	  	 </tr>
 	  	 <tr>
 	  	   <th>Id</th>

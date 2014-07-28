@@ -8,7 +8,7 @@
 		<div class="rant-single-text-container">
 			<i class="icon-globe pull-right"></i>
 			<blockquote class="pull-left wide">
-			<p class="rant-single-text small-bottom-margin"><b class="mild-bold">403</b>: You tried to do something without a valid cookie. <span class="smaller">Also, <span class=" mild-bold">the game.</span></span></p>
+			<p class="rant-single-text small-bottom-margin"><b class="mild-bold">400</b>: Don't mess with URLs</p>
 			<small class="rant-single-info"><b class="dark-bold">HTTP</b>, Interwebs</small>
 			<span class="smaller muted pull-right">01/01/1970</span>
 			</blockquote>

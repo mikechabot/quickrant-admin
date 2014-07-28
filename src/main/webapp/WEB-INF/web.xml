@@ -19,6 +19,10 @@
       <param-name>visitor-service</param-name>
       <param-value>com.quickrant.api.services.VisitorService</param-value>
     </init-param>
+    <init-param>
+      <param-name>cache-stats-service</param-name>
+      <param-value>com.quickrant.api.services.CacheStatsService</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>StatsController</servlet-name>
@@ -26,6 +30,10 @@
   </servlet-mapping>
 
   <!-- Error pages -->
+  <error-page>
+    <error-code>400</error-code>
+    <location>/400.jsp</location>
+  </error-page>
   <error-page>
     <error-code>404</error-code>
     <location>/404.jsp</location>

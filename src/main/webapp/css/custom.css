@@ -18,8 +18,42 @@ body {
   font-size: 12px;
 }
 
+/* Error pages */
+
+.single-stream { 
+  margin-top: 30px;
+  width: 40%;  
+}
+
+.rant-container {
+padding: 5px;
+margin: 10px;
+clear: both;
+}
+
+.rant-single-text-container {
+padding-left: 2%;
+overflow:hidden; 
+text-overflow:hidden;
+}
+
+.rant-single-text {
+font-size: 36px;
+font-weight: 300;
+margin-bottom: 20px;
+}
+
+.rant-single-info {
+margin-top: 10px;
+font-size: 20px;
+}
+
+
 /* JQuery Tablesorter */
 
+table.tablesorter > tbody > tr > td {
+  min-width: 30px;
+}
 table.tablesorter thead tr .header {
 	background-image: url(/img/bg.gif);
 	background-repeat: no-repeat;

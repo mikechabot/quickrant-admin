@@ -29,6 +29,11 @@ public class Helper {
 	public static String getFormattedDate(Timestamp timestamp) {
 		return TimeUtils.getFormattedDate(timestamp);
 	}
+	
+	/* Fetch a question given an id */
+	public static String getFormattedDateWithSec(Timestamp timestamp) {
+		return TimeUtils.getFormattedDateWithSec(timestamp);
+	}
 
 
 }

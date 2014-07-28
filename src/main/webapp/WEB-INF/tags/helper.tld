@@ -25,4 +25,11 @@
             java.lang.String getFormattedDate(java.sql.Timestamp)
         </function-signature>
     </function>
+    <function>
+        <name>getFormattedDateWithSec</name>
+        <function-class>com.quickrant.admin.web.Helper</function-class>
+        <function-signature>
+            java.lang.String getFormattedDateWithSec(java.sql.Timestamp)
+        </function-signature>
+    </function>
 </taglib>
