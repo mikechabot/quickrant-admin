@@ -30,7 +30,8 @@ public class Bootstrap implements ServletContextListener {
 
 			/* Database stuff */
 			Database database = new Database();
-			database.initialize();
+			database.startStatisticsJob();
+			log.info("Database reached: " + database.getVersion());
 
 			log.info("Bootstrapping complete...");
 

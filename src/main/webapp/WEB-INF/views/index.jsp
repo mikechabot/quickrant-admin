@@ -4,12 +4,7 @@
 <%@ taglib uri="/WEB-INF/tags/helper.tld" prefix="helper" %> 
 <c:import url="/header.jsp"/>
   <div class="container">
-	<div class="page-header">
-	  <h1>Admin Tools <small>quickrant</small></h1>
-	</div>
-  </div>
-  <div class="container">
-	<div class="panel panel-default">
+	<div class="panel panel-custom">
 	  <div class="panel-heading">
 	  <div class="row">
 	    <div class="col-md-9">

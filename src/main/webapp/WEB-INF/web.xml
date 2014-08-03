@@ -11,22 +11,30 @@
     <listener-class>com.quickrant.admin.Bootstrap</listener-class>
   </listener>
   
+  <!-- Open a connection for each request -->
+  <filter>
+    <filter-name>ActiveJdbcFilter</filter-name>
+    <filter-class>com.quickrant.api.filters.ActiveJdbcFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ActiveJdbcFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Send / requests to AdminController -->
+  <servlet>
+    <servlet-name>AdminController</servlet-name>
+    <servlet-class>com.quickrant.admin.controllers.AdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminController</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+  
   <!-- Send /cache requests to CacheController -->
   <servlet>
     <servlet-name>StatsController</servlet-name>
     <servlet-class>com.quickrant.admin.controllers.StatsController</servlet-class>
-    <init-param>
-      <param-name>visitor-service</param-name>
-      <param-value>com.quickrant.api.services.VisitorService</param-value>
-    </init-param>
-    <init-param>
-      <param-name>cache-stats-service</param-name>
-      <param-value>com.quickrant.api.services.CacheStatsService</param-value>
-    </init-param>
-    <init-param>
-      <param-name>database-stats-service</param-name>
-      <param-value>com.quickrant.api.services.DatabaseStatsService</param-value>
-    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>StatsController</servlet-name>

@@ -1,3 +1,4 @@
+<%@ page language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,3 +22,9 @@
     
   </head>
   <body>
+  
+  <div class="container">
+	<div class="page-header custom-header">
+	  <h1>${pageTitle} <small>[quickrant]</small></h1>
+	</div>
+  </div>
