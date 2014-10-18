@@ -7,8 +7,6 @@ import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import com.quickrant.admin.Controller;
 import com.quickrant.api.database.Database;
 import com.quickrant.api.models.CacheStats;
@@ -18,11 +16,10 @@ import com.quickrant.api.utils.TimeUtils;
 
 @SuppressWarnings("serial")
 public class StatsController extends Controller {
-
-	private static Logger log = Logger.getLogger(StatsController.class);
 	
 	public static List<String> timeframes = new ArrayList<String>(0);
 	
+	// TODO: Clean this up...
 	static {
 		/* Last 24 hours */
 		timeframes.add("select id, created_at, cookie, ip_address, user_agent from visitors where created_at > (now() - interval '1 day') and is_complete = true");
